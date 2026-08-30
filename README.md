@@ -26,5 +26,5 @@ terraform init
 terraform apply --auto-approve
 ```
 
-After this dwva is available to all hosts on the port 4280
-Note: It may happen that the first apply could fail, please run apply again
+After this dwva is available to all hosts on  port 4280
+
