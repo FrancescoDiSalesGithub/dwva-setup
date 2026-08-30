@@ -21,6 +21,11 @@ provider "docker" {
 
 }
 
+provisioner "local-exec" {
+
+  command="mkdir dwva"
+
+}
 
 resource "git_clone" "clone" {
   directory      = "./dwva"
