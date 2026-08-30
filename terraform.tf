@@ -41,5 +41,9 @@ resource "docker_compose" "composedvwa" {
   ]
 }
 
+provisioner "fix-dwva-to-all-host" {
+  command=" sed -i 's|127.0.0.1|0.0.0.0|g' ${path.module}/dwva/compose.yml"
+}
+
 
 
