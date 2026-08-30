@@ -5,7 +5,7 @@ terraform {
       version = "2026.8.21"
     }
 
- docker = {
+    docker = {
       source  = "kreuzwerker/docker"
       version = "4.5.0"
     }
@@ -21,16 +21,17 @@ provider "docker" {
 
 }
 
-provisioner "local-exec" {
 
-  command="mkdir dwva"
-
-}
 
 resource "git_clone" "clone" {
   directory      = "./dwva"
   url            = "https://github.com/digininja/DVWA"
   reference_name = "master"
+
+  provisioner "local-exec" {
+    command = "sed -i 's|127.0.0.1|0.0.0.0|g' ${path.module}/dwva/compose.yml"
+  }
+
 }
 
 resource "docker_compose" "composedvwa" {
@@ -40,10 +41,4 @@ resource "docker_compose" "composedvwa" {
     "${path.module}/dwva/compose.yml",
   ]
 }
-
-provisioner "fix-dwva-to-all-host" {
-  command=" sed -i 's|127.0.0.1|0.0.0.0|g' ${path.module}/dwva/compose.yml"
-}
-
-
 
