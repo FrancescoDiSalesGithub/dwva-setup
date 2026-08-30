@@ -26,5 +26,8 @@ terraform init
 terraform apply --auto-approve
 ```
 
-After this dwva is available to all hosts on  port 4280
+After this dwva is available to all hosts on  port 4280. When you are done with the environment  please run
 
+```
+terraform destroy
+```
