@@ -41,7 +41,7 @@ resource "docker_compose" "composedvwa" {
     "${path.module}/dwva/compose.yml",
   ]
 
- depends_on = [gitclone.clone]
+ depends_on = [git_clone.clone]
 
 }
 
